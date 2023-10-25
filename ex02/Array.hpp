@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:56:19 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/10/17 12:13:21 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:42:29 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ Array<T> & Array<T>::operator=(Array const & src)
 		if (this->_arr)
 			delete [] this->_arr;
 		this->_arr = new T[src._len];
-		this->_len = src._len;
 		for (unsigned int i = 0; i < src._len; i++)
 			this->_arr[i] = src._arr[i];
 		this->_len = src._len;
@@ -79,7 +78,9 @@ Array<T> & Array<T>::operator=(Array const & src)
 template <typename T>
 T & Array<T>::operator[](unsigned int i)
 {
-	if (i >= this->_len)
+	if (i >= this->_len || i < 0 
+	|| this->_arr == NULL
+	|| i > std::numeric_limits<unsigned int>::max())
 		throw Array<T>::OutOfRangeException();
 	return (this->_arr[i]);
 }
