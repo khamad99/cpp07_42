@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:56:19 by kalshaer          #+#    #+#             */
-/*   Updated: 2023/10/25 14:42:29 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/12/24 21:15:55 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ARRAY_HPP
 
 # include <iostream>
+# include <limits>
 
 template <typename T>
 class Array
@@ -65,8 +66,6 @@ Array<T> & Array<T>::operator=(Array const & src)
 {
 	if (this != &src)
 	{
-		if (this->_arr)
-			delete [] this->_arr;
 		this->_arr = new T[src._len];
 		for (unsigned int i = 0; i < src._len; i++)
 			this->_arr[i] = src._arr[i];
