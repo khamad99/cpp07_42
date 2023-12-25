@@ -23,6 +23,12 @@ int main(int, char**)
         Array<int> test(tmp);
     }
 
+	 {
+        Array<int> tmp (100);
+        Array<int> test(500);
+		test = tmp;
+    }
+
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])
